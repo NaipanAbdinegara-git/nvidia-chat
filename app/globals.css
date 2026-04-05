@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Zebra AI — Monochrome Elegant Theme ── */
+:root {
+  --bg-base:        #ffffff;
+  --bg-sidebar:     #fafafa;
+  --bg-surface:     #ffffff;
+  --bg-hover:       #f5f5f5;
+  --bg-active:      #efefef;
+  --bg-input:       #ffffff;
+
+  --border:         #e8e8e8;
+  --border-strong:  #d0d0d0;
+  --border-focus:   #1a1a1a;
+
+  --text-primary:   #111111;
+  --text-secondary: #555555;
+  --text-muted:     #aaaaaa;
+
+  --accent:         #111111;
+  --accent-hover:   #333333;
+  --accent-light:   #f0f0f0;
+
+  --danger:         #c0392b;
+  --danger-light:   #fdf2f2;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+
+  --font-size-base: 15px;
+  --sidebar-width: 280px;
+}
+
+[data-font-size="small"]  { --font-size-base: 13px; }
+[data-font-size="medium"] { --font-size-base: 15px; }
+[data-font-size="large"]  { --font-size-base: 17px; }
+
+/* FIX: box-sizing global + overflow-x hidden di html/body */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  height: 100%;
+  min-height: 100dvh;
+  /* FIX: cegah horizontal scroll di level html */
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* FIX: cegah horizontal scroll di level body */
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c8c8c8; }
+
+/* ── Markdown Prose ── */
+.prose-chat {
+  font-size: var(--font-size-base);
+  line-height: 1.78;
+  color: var(--text-primary);
+  /* FIX: word-break untuk teks panjang (URL, kode) */
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.prose-chat h1,.prose-chat h2,.prose-chat h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 1.2em 0 0.5em;
+}
+.prose-chat h1 { font-size: 1.3em; }
+.prose-chat h2 { font-size: 1.1em; }
+.prose-chat h3 { font-size: 1em; }
+.prose-chat p { margin-bottom: 0.7em; }
+.prose-chat p:last-child { margin-bottom: 0; }
+.prose-chat ul,.prose-chat ol { margin: 0.4em 0 0.7em 1.4em; }
+.prose-chat li { margin-bottom: 0.25em; }
+.prose-chat code {
+  background: #f4f4f4;
+  color: #111;
+  border: 1px solid #e8e8e8;
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+  font-size: 0.875em;
+  font-family: 'SF Mono','Fira Code','Courier New',monospace;
+  /* FIX: break-all agar kode inline tidak overflow di mobile */
+  word-break: break-all;
+}
+.prose-chat pre {
+  background: #141414;
+  color: #e8e8e8;
+  border-radius: 10px;
+  padding: 0.8em 1em;
+  /* FIX: overflow-x: auto untuk scroll horizontal hanya di blok kode */
+  overflow-x: auto;
+  /* FIX: max-width 100% agar tidak meluber */
+  max-width: 100%;
+  margin: 0.8em 0;
+  font-size: 0.8em;
+  border: 1px solid #2a2a2a;
+}
+.prose-chat pre code {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  word-break: normal;
+  /* FIX: white-space pre agar kode menjaga format, scroll ditangani parent */
+  white-space: pre;
+}
+.prose-chat blockquote {
+  border-left: 2px solid #d0d0d0;
+  padding-left: 1em;
+  color: var(--text-secondary);
+  margin: 0.8em 0;
+  font-style: italic;
+}
+/* FIX: table display block + overflow-x auto untuk tabel responsif di mobile */
+.prose-chat table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8em 0;
+  font-size: 0.875em;
+  display: block;
+  overflow-x: auto;
+  /* FIX: max-width 100% agar tidak overflow */
+  max-width: 100%;
+}
+.prose-chat th,.prose-chat td { border: 1px solid var(--border); padding: 0.45em 0.7em; text-align: left; white-space: nowrap; }
+.prose-chat th { background: var(--bg-hover); font-weight: 600; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.04em; }
+.prose-chat a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #bbb; word-break: break-all; }
+.prose-chat a:hover { text-decoration-color: #111; }
+.prose-chat hr { border: none; border-top: 1px solid var(--border); margin: 1.2em 0; }
+.prose-chat strong { font-weight: 600; }
+/* FIX: gambar dalam markdown responsif */
+.prose-chat img { max-width: 100%; height: auto; border-radius: 8px; display: block; }
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: "▋";
+  color: #bbb;
+  animation: blink 0.9s step-end infinite;
+  font-size: 0.85em;
+}
+
+/* Animations */
+@keyframes blink   { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+@keyframes slideUp { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideInLeft { from{opacity:0;transform:translateX(-100%)} to{opacity:1;transform:translateX(0)} }
+
+.animate-fade-in     { animation: fadeIn 0.18s ease-out; }
+.animate-slide-up    { animation: slideUp 0.18s ease-out; }
+.animate-slide-left  { animation: slideInLeft 0.22s ease-out; }
+
+/* Spin */
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 40;
+  backdrop-filter: blur(2px);
+}
+
+/* FIX: Touch-friendly tap targets di mobile — min 44px (Apple HIG) */
+@media (max-width: 640px) {
+  button {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  .sidebar-overlay {
+    backdrop-filter: blur(4px);
+  }
+  /* FIX: Textarea 16px di mobile — WAJIB untuk cegah iOS zoom otomatis */
+  textarea, input[type="text"], input[type="email"], input[type="password"] {
+    font-size: 16px !important;
+  }
+}
+
+/* FIX: overflow-wrap utility untuk teks panjang */
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* ── Prose / Markdown content ──────────────────────────── */
+.prose-chat {
+  font-size: var(--font-size-base, 0.875rem);
+  line-height: 1.7;
+  color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose-chat p { margin: 0.5em 0; }
+.prose-chat p:first-child { margin-top: 0; }
+.prose-chat p:last-child { margin-bottom: 0; }
+.prose-chat ul, .prose-chat ol { margin: 0.5em 0; padding-left: 1.4em; }
+.prose-chat li { margin: 0.25em 0; }
+.prose-chat li > p { margin: 0; }
+.prose-chat h1, .prose-chat h2, .prose-chat h3, .prose-chat h4 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 1em 0 0.4em;
+  color: var(--text-primary);
+}
+.prose-chat h1 { font-size: 1.2em; }
+.prose-chat h2 { font-size: 1.1em; }
+.prose-chat h3, .prose-chat h4 { font-size: 1em; }
+.prose-chat h1:first-child,
+.prose-chat h2:first-child,
+.prose-chat h3:first-child { margin-top: 0; }
+.prose-chat strong { font-weight: 600; color: var(--text-primary); }
+.prose-chat em { font-style: italic; }
+.prose-chat a { color: var(--accent); text-decoration: underline; word-break: break-all; }
+.prose-chat hr { border: none; border-top: 1px solid var(--border); margin: 1em 0; }
+.prose-chat pre { margin: 0; }
+
+/* Typing cursor for streaming */
+.typing-cursor > *:last-child::after {
+  content: "▋";
+  animation: blink 0.7s step-end infinite;
+  font-size: 0.75em;
+  opacity: 0.7;
+  margin-left: 1px;
+}
+@keyframes blink { 0%, 100% { opacity: 0.7; } 50% { opacity: 0; } }
+
+/* KaTeX display math */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.5em 0; }

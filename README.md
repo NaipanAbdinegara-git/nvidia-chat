@@ -82,11 +82,11 @@ npm run dev
 > Replace with real screenshots
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Main+View" width="80%" />
+  <img src="screenshots/Screenshot_20260502_002348.png" width="80%" />
 </p>
 
 <p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Feature+View" width="80%" />
+  <img src="screenshots/Screenshot_20260502_002425.png" width="80%" />
 </p>
 
 ---

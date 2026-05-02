@@ -78,9 +78,6 @@ npm run dev
 ---
 
 ## 📸 Screenshots
-
-> Replace with real screenshots
-
 <p align="center">
   <img src="screenshots/Screenshot_20260502_002348.png" width="80%" />
 </p>
